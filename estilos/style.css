@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.contenedor{
+    display: flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    height: 100vh;
+    padding: 20px;
+    
+}
+
+h1{
+    font-weight: 600;
+}
+
+p{
+    color: pink;
+    font-weight: 500;
+
+    
+}
