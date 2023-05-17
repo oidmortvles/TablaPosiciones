@@ -13,50 +13,62 @@
 </head>
 <body>
     <div class="contenedor"> 
-        <div>
+        
+        
+        <div class="izquierda">
             <h1>Tabla de resultados</h1>
-            <p>Resultados de la última fecha</p>
+            <p>Resultados de la última fecha.</p>
+            <p>Los equipos que peligran el descenso son: </p>
+
+            
+
+            <% for (let i = 24; i < 28; i++) { %>
+                <p class="info">↳ <%= estado.map(equipo => equipo.cuadro[i]) %> </p>
+              <% } %>
+              
+
+            <form method="post" action="/">
+                <button type="submit" class="boton-default">Agregar</button>
+            </form>
 
         </div>
 
-        <form method="post" action="/">
-            <button type="submit">Agregar</button>
-        </form>
+        <div class="centro">
 
-        <table>
-            <tr>
-              <th>Puesto</th>
-              <th>Escudo</th>
-              <th>Cuadro</th>
-              <th>PJ</th>
-              <th>G</th>
-              <th>E</th>
-              <th>P</th>
-              <th>GF</th>
-              <th>GC</th>
-              <th>DG</th>
-              <th>Pts</th>
-            </tr>
-
-
-            <% for (let i = 0; i < 28; i++) { %>
+            <table>
                 <tr>
-                  <td><%= estado.map(equipo => equipo.puesto[i]) %></td>
-                  <td><img src="<%= estado.map(equipo => equipo.escudo[i]) %>" alt="Escudo" class="escudos"/></td> 
-                  <td><%= estado.map(equipo => equipo.cuadro[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.partidos_jugados[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.ganados[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.empatados[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.perdidos[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.goles_favor[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.goles_contra[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.diferencia_goles[i]) %></td>
-                  <td><%= estado.map(equipo => equipo.puntos_totales[i]) %></td>
+                    <th>Puesto</th>
+                    <th></th>
+                    <th>Equipo</th>
+                    <th>PJ</th>
+                    <th>G</th>
+                    <th>E</th>
+                    <th>P</th>
+                    <th>GF</th>
+                    <th>GC</th>
+                    <th>DG</th>
+                    <th>Pts</th>
                 </tr>
-            <% } %>
-        </table>
 
-   
+
+                <% for (let i = 0; i < 28; i++) { %>
+                    <tr>
+                        <td><%= estado.map(equipo => equipo.puesto[i]) %></td>
+                        <td><img src="<%= estado.map(equipo => equipo.escudo[i]) %>" alt="Escudo" class="escudos"/></td> 
+                        <td class="izq"><%= estado.map(equipo => equipo.cuadro[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.partidos_jugados[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.ganados[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.empatados[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.perdidos[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.goles_favor[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.goles_contra[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.diferencia_goles[i]) %></td>
+                        <td><%= estado.map(equipo => equipo.puntos_totales[i]) %></td>
+                    </tr>
+                <% } %>
+            </table>
+
+        <div>
           
 
         
