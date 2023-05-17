@@ -49,7 +49,7 @@ var puntos_totales=[];
 
 
 //hace la request a la pagina, le pasa el encoder y con una funcion que captura el ERR, RESP y BODY.
-request({url:'https://www.futbolargentino.com/primera-division/tabla-de-posiciones',encoding: 'binary'}, 
+request({url:'https://www.futbolargentino.com/primera-division/tabla-de-posiciones',encoding: 'utf-8'}, 
     function(err,resp,body){
         if(!err && resp.statusCode==200){
             
@@ -76,7 +76,7 @@ request({url:'https://www.futbolargentino.com/primera-division/tabla-de-posicion
                     
             });
     
-            }
+        }
     });
 
 
@@ -85,7 +85,7 @@ const agregarEstado=async () => {
     try {
 
         //creo el objeto que guardare en la DB.
-        const equiposGuardar = new Equipos({
+        const estadoEquipos = new Equipos({
             puesto: puesto,
             escudo: escudo,
             cuadro: cuadro,
@@ -100,7 +100,7 @@ const agregarEstado=async () => {
             
             });;
 
-      await equiposGuardar.save();
+      await estadoEquipos.save();
       console.log('Datos guardados en MongoDB');
       //console.log(puntos_totales[0]);
     } catch (error) {
@@ -108,4 +108,20 @@ const agregarEstado=async () => {
     }
   };
 
-module.exports =agregarEstado;
+
+//funcion que carga los datos obtenidos del Scrapping
+
+const traerTabla = async(modelo) => {
+    try {
+        const estado = await modelo.find({});
+        return estado;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+
+}
+
+
+
+module.exports ={agregarEstado : agregarEstado, traerTabla : traerTabla , Equipos:Equipos};

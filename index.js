@@ -2,7 +2,7 @@
 import { agregarEstado } from './mongo.js'; */
 
 const express = require('express');
-const agregarEstado = require('./mongo.js');
+const funciones = require('./mongo.js');
 
 
 
@@ -20,11 +20,14 @@ app.listen('8000',(req,res)=>{
 
 
 //creacion de rutas
-app.get('/',(req,res)=>{
-    res.render('index');
+
+app.get('/',async (req,res)=>{
+    let estado = await funciones.traerTabla(funciones.Equipos);
+    res.render('index',{estado});
 });
 
+
 app.post('/',(req,res)=>{
-    agregarEstado(); 
+    funciones.agregarEstado(); 
     res.redirect('/'); 
 });
