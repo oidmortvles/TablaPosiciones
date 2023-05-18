@@ -7,7 +7,7 @@
 
 :root {
     --colorFondo: #0C0D10;
-    --colorContraste:#009FFD;
+    --colorContraste:#07BEB8;
     --colorTexto:#EAF6FF;
     --colorTabla: #EAF6FF;
     --descenso:rgba(217,142,134,0.4);
@@ -69,6 +69,15 @@ tr{
     border-bottom: 1px solid black;
 }
 
+.fila-pegada {
+  position: sticky;
+  top: 0;
+  background-color: var(--colorFondo);
+  border-bottom: 8px solid var(--colorContraste);
+  
+
+}
+
 
 td{ 
     
@@ -85,7 +94,9 @@ th{
     padding-top:10px;
     padding-bottom: 10px;
     text-align: center;
+    color: var(--colorTexto);
 }
+
 
 .izq{
     text-align: left;
@@ -111,7 +122,6 @@ tr:nth-last-child(-n+4) {
   }
   
 /* botones */
-
 .boton {
   border: none;
   border-radius: 20px;
