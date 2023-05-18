@@ -10,7 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600&display=swap" rel="stylesheet">
-    <title>Challenge</title>
+    <title>Tabla Fútbol Argentino</title>
+    <meta name="keywords" content="futbol, argentino, tabla, posiciones">
+    <meta name="description" content="Tabla de futbol argentino donde se muestran las posiciones y puntos de los equipos. Ofrece la posibilidad de guardar y revisar los resultados que guarde el usuario ">
+    <meta name="author" content="Daniel Per. Github: /oidmortvles">
 </head>
 <body>
     <div class="contenedor"> 
@@ -30,7 +33,7 @@
               
             <br>
             <form method="post" action="/">
-                <button type="submit" class="boton">Guardar Datos ↺</button>
+                <button type="submit" class="boton">Guardar Fecha ↺</button>
             </form>
 
             <br>
@@ -38,7 +41,7 @@
             
             <% if (totalObjetos >= 2) { %>
                 <form method="get" action="/anteriores">
-                  <button type="submit" class="boton ">Resultados anteriores ⇐</button>
+                  <button type="submit" class="boton ">Fechas Guardadas ⇐</button>
                 </form>
               <% } %>
             
