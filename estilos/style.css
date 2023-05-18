@@ -110,8 +110,62 @@ tr:nth-last-child(-n+4) {
     background-color: var(--descenso); 
   }
   
+/* botones */
 
-/* Ocultar filas para el responsive  */
+.boton {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: #f1f1f1;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: var(--colorContraste);
+  color:var(--colorTexto)
+}
+
+.boton:focus {
+  outline: none;
+}
+
+.fecha{
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: #f1f1f1;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+  cursor: pointer;
+  margin: 5px 0px;
+}
+
+.fecha:hover{
+  background-color: var(--colorContraste);
+  color:var(--colorTexto)
+}
+
+.fecha:focus {
+  outline: none;
+}
+
+.boton:active, .fecha:active {
+  background-color: var(--colorContraste);
+  color:var(--colorTexto)
+}
+
+
+
+
+/* responsive  */
 
 @media only screen and (max-width: 768px) {
     

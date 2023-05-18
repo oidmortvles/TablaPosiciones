@@ -22,10 +22,18 @@ app.listen('8000',(req,res)=>{
 //creacion de rutas
 
 app.get('/',async (req,res)=>{
-    let estado = await funciones.traerTabla(funciones.Equipos);
-    res.render('index',{estado});
+    const totalObjetos = await funciones.totalObjetos(funciones.Equipos);
+    let estado = await funciones.traerTabla(funciones.Equipos);    
+    res.render('index',{estado,totalObjetos});
+    
 });
 
+app.get('/anteriores', async (req, res) => {
+    const totalObjetos = await funciones.totalObjetos(funciones.Equipos);
+    const valorBoton = req.query.valor; // Acceder al valor del botón enviado en la solicitud
+    let anterior = await funciones.tablasAnteriores(valorBoton);
+    res.render('tablasAnteriores', { anterior, totalObjetos });
+});
 
 app.post('/',(req,res)=>{
     funciones.agregarEstado(); 

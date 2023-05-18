@@ -28,7 +28,10 @@ const datos= new Schema({
     goles_favor: [Number],
     goles_contra : [Number],
     diferencia_goles : [Number],
-    puntos_totales : [Number]});
+    puntos_totales : [Number],
+    fecha:{type: Date,
+      default: Date.now} 
+  });
 
 const Equipos = mongoose.model('equipos',datos);
 
@@ -45,6 +48,7 @@ var goles_favor= [];
 var goles_contra= [];
 var diferencia_goles=[];
 var puntos_totales=[];
+var fechaDeCarga=[];
 
 
 
@@ -109,11 +113,10 @@ const agregarEstado=async () => {
   };
 
 
-//funcion que carga los datos obtenidos del Scrapping
-
+//funcion que carga los datos obtenidos del Scrapping mostrando siempre el ultimo resultado guardado.
 const traerTabla = async(modelo) => {
     try {
-        const estado = await modelo.find({});
+        const estado = modelo.find({}).sort({ fecha: -1 }).limit(1);
         return estado;
       } catch (error) {
         console.error(error);
@@ -122,6 +125,28 @@ const traerTabla = async(modelo) => {
 
 }
 
+//funcion que permite ver los cambios anteriores guardados
+const tablasAnteriores = async(posicion) => {
+  try {
+    const estadoAnterior = await Equipos.findOne().skip(posicion).exec();
+    return [estadoAnterior];
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+/* funcion para saber cuantos objetos hay en la Db */
+const totalObjetos = async (modelo) => {
+  try {
+    const total = await modelo.countDocuments({});
+    return total;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
 
 
-module.exports ={agregarEstado : agregarEstado, traerTabla : traerTabla , Equipos:Equipos};
+
+module.exports ={agregarEstado : agregarEstado, traerTabla : traerTabla , Equipos:Equipos,tablasAnteriores:tablasAnteriores, totalObjetos:totalObjetos};
